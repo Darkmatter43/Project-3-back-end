@@ -1,6 +1,9 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const cors=require('cors')
+require('dotenv').config()
+const port=process.env.PORT||3001
+const mongodbURI=process.env.MONGODB_URI
 const app=express()
 
 app.use(express.json())
@@ -19,10 +22,9 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(3001,()=>{
-    console.log('listening on port 3001');
+app.listen(port,()=>{
+    console.log('listening on port '+port);
 })
-mongoose.connect('mongodb://localhost:27017/games')
-mongoose.connection.once('open',()=>{
-    console.log('connection to mongod...');
+mongoose.connect(mongodbURI,()=>{
+    console.log('Connection with mongod established at',mongodbURI);
 })
