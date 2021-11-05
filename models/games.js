@@ -5,7 +5,8 @@ const gamesSchema=new mongoose.Schema({
     name:String,
     description:String,
     image:String,
-    rating:Number
+    rating:Number,
+    user: String
 })
 
 const Game=mongoose.model('Game',gamesSchema)
