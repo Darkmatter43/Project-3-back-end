@@ -11,7 +11,10 @@ app.use(cors())
 
 
 const gamesController=require('./controllers/games.js')
+const userController = require('./controllers/users')
 app.use('/games',gamesController)
+app.use('/user', userController)
+
 
 app.get('/',(req,res)=>{
     res.redirect('/games')
