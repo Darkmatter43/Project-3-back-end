@@ -27,4 +27,10 @@ user.post('/login', (req, res) => {
      })
 })
 
+user.get('/',(req,res)=>{
+     User.find({},(err,foundUser)=>{
+          res.json(foundUser)
+     })
+})
+
 module.exports = user
