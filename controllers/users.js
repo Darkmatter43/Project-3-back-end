@@ -20,6 +20,8 @@ user.post('/login', (req, res) => {
           if(err){
                console.log(err.message)
                res.redirect('/')
+          }else if(!foundUser){
+               res.redirect('/')
           }else if(bcrypt.compareSync(req.body.password, foundUser.password)){
                res.json({username: foundUser.username})
           }else{
