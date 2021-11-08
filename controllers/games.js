@@ -22,7 +22,7 @@ router.delete('/:id',(req,res)=>{
 })
 
 router.put('/:id',(req,res)=>{
-    Game.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGame)=>{
+    Game.findByIdAndUpdate(req.params.id, {name: req.body.name, description: req.body.description, image: req.body.image, $push : {players: req.body.players} }, {new:true},(err,updatedGame)=>{
         res.json(updatedGame)
     })
 })
