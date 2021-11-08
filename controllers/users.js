@@ -24,7 +24,7 @@ user.post('/login', (req, res) => {
                res.json({username: foundUser.username})
           }else{
                console.log('something else happened')
-               res.redirect('/')
+               res.json({username: null})
           }
      })
 })
