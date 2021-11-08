@@ -18,11 +18,13 @@ user.post('/new', (req, res) => {
 user.post('/login', (req, res) => {
      User.findOne({username: req.body.username}, (err, foundUser) => {
           if(err){
-               res.send(err.message)
+               console.log(err.message)
+               res.redirect('/')
           }else if(bcrypt.compareSync(req.body.password, foundUser.password)){
                res.json({username: foundUser.username})
           }else{
-               res.sendStatus(401)
+               console.log('something else happened')
+               res.redirect('/')
           }
      })
 })
